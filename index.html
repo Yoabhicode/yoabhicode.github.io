@@ -98,18 +98,35 @@
         .ae { background: #00005b; color: #dcb6ff; }
         .soft-card span { color: #000; font-weight: 700; font-size: 1.4rem; }
 
-        /* --- 7. WORK (VIDEOS HERE) --- */
+        /* --- 7. WORK (UPDATED) --- */
         #work { background: #111; align-items: center; }
         .work-grid {
             display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
             width: 100%; margin-top: 50px;
         }
+        
+        /* UPDATED WORK ITEM STYLING */
         .work-item { 
-            aspect-ratio: 9/16; background: #222; border-radius: 12px; overflow: hidden; 
-            opacity: 0; transform: translateY(50px);
+            aspect-ratio: 9/16; 
+            background: #222; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            opacity: 0; 
+            transform: translateY(50px);
+            display: block; /* Turns the anchor tag into a block box */
+            cursor: pointer; /* Shows hand cursor */
+            border: 1px solid transparent;
+            transition: border 0.3s ease;
         }
+        .work-item:hover {
+            border: 1px solid #FF5500;
+        }
+
         /* VIDEO STYLE */
-        .work-item video { width: 100%; height: 100%; object-fit: cover; }
+        .work-item video { 
+            width: 100%; height: 100%; object-fit: cover; 
+            pointer-events: none; /* Clicks pass through to the link */
+        }
 
         /* --- 8. EXPERIENCE (IMAGE HERE) --- */
         #experience { flex-direction: row; align-items: flex-start; justify-content: space-between; background: #fff; }
@@ -123,11 +140,10 @@
         .exp-right img { width: 100%; filter: grayscale(100%); transform: translateX(50px); opacity: 0; }
 
         /* --- 9. CONTACT --- */
-        /* --- CONTACT SECTION FIX --- */
         #contact { 
             align-items: center; 
             text-align: center; 
-            background-color: #fff; /* White background */
+            background-color: #fff; 
         }
         
         .contact-text { 
@@ -137,15 +153,12 @@
             text-transform: uppercase; 
             opacity: 0; 
             transform: translateY(50px); 
-            color: #000; /* FORCE BLACK COLOR */
+            color: #000;
         }
         
-        /* Orange color for "Me" */
         .contact-text.text-orange { 
             color: #FF5500 !important; 
         }
-        #contact { align-items: center; text-align: center; background: #fff; }
-        .contact-text { font-size: 10vw; font-weight: 900; line-height: 0.85; text-transform: uppercase; opacity: 0; transform: translateY(50px); }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
@@ -242,18 +255,15 @@
         <h1 class="text-orange" id="work-title" style="font-size: 5rem; font-weight: 900; margin-bottom: 40px; opacity: 0; transform: translateY(30px);">My Work</h1>
         
         <div class="work-grid">
-            <div class="work-item">
-                <video autoplay loop muted playsinline><source src="r3 (1).mp4" type="video/mp4"></video>
-            </div>
-            <div class="work-item">
-                <video autoplay loop muted playsinline><source src="r3 (2).mp4" type="video/mp4"></video>
-            </div>
-            <div class="work-item">
-                <video autoplay loop muted playsinline><source src="r3 (4).mp4" type="video/mp4"></video>
-            </div>
-            <!-- <div>
-                <video autoplay loop muted ><source src="r4.mp4" type="video/mp4">
-            </div> -->
+            <a href="r3 (1).mp4" target="_blank" class="work-item">
+                <video muted loop playsinline preload="metadata"><source src="r3 (1).mp4" type="video/mp4"></video>
+            </a>
+            <a href="r3 (2).mp4" target="_blank" class="work-item">
+                <video muted loop playsinline preload="metadata"><source src="r3 (2).mp4" type="video/mp4"></video>
+            </a>
+            <a href="r3 (4).mp4" target="_blank" class="work-item">
+                <video muted loop playsinline preload="metadata"><source src="r3 (4).mp4" type="video/mp4"></video>
+            </a>
         </div>
     </section>
 
@@ -290,11 +300,11 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // 1. HERO (Fade In)
+        // 1. HERO
         gsap.from("#hero-title", { y: 50, opacity: 0, duration: 1, delay: 0.2, ease: "power3.out" });
         gsap.from("#hero-subtitle", { y: 30, opacity: 0, duration: 1, delay: 0.5, ease: "power3.out" });
 
-        // 2. LETS GO (Pop In - Snappy)
+        // 2. LETS GO
         gsap.to("#letsgo-text", {
             scrollTrigger: {
                 trigger: "#lets-go",
@@ -307,7 +317,7 @@
             ease: "power1.inOut"
         });
 
-        // 3. INTRO - Text Left, Image Right
+        // 3. INTRO
         let tlIntro = gsap.timeline({
             scrollTrigger: {
                 trigger: "#intro",
@@ -331,7 +341,7 @@
         tlAbout.from("#about-title", { y: 50, opacity: 0, duration: 0.8, ease: "power3.out" })
                .to("#about-text", { y: 0, opacity: 1, duration: 0.8, ease: "power3.out" }, "-=0.4");
 
-        // 5. HOBBIES - White Outline Effect
+        // 5. HOBBIES
         let tlHobby = gsap.timeline({ 
             scrollTrigger: { trigger: "#hobbies", start: "top 60%" }
         });
@@ -353,7 +363,7 @@
             scale: 1, opacity: 1, stagger: 0.1, duration: 0.6, ease: "back.out(1.7)"
         });
 
-        // 7. WORK - CASCADE UP
+        // 7. WORK - UPDATED WITH FORCE PLAY SCRIPT
         gsap.to("#work-title", {
             scrollTrigger: { trigger: "#work", start: "top 80%" },
             y: 0, opacity: 1, duration: 0.6
@@ -361,7 +371,14 @@
         
         gsap.to(".work-item", {
             scrollTrigger: { trigger: "#work", start: "top 70%" },
-            y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "power3.out"
+            y: 0, opacity: 1, stagger: 0.1, duration: 0.8, ease: "power3.out",
+            onComplete: () => {
+                // FORCE PLAY VIDEOS WHEN ANIMATION ENDS
+                let videos = document.querySelectorAll('.work-item video');
+                videos.forEach(video => {
+                    video.play().catch(e => console.log("Play error:", e));
+                });
+            }
         });
 
         // 8. EXPERIENCE
