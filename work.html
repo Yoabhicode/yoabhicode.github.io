@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects | Abhi Sharma</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* THEME MATCHING STYLES */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+        body { background-color: #000; color: #fff; overflow-x: hidden; padding-bottom: 50px; }
+        
+        .nav-back {
+            position: fixed; top: 30px; left: 5%; z-index: 999;
+            mix-blend-mode: difference;
+        }
+        .nav-back a {
+            color: #fff; text-decoration: none; font-weight: 600; font-size: 1.2rem;
+            border: 1px solid #fff; padding: 10px 20px; border-radius: 50px;
+            transition: 0.3s;
+        }
+        .nav-back a:hover { background: #fff; color: #000; }
+
+        .header { text-align: center; padding: 120px 20px 60px 20px; }
+        .header h1 { font-size: 5vw; font-weight: 900; line-height: 1; margin-bottom: 10px; }
+        .text-orange { color: #FF5500; }
+        
+        /* VIDEO GRID */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 videos per row */
+            gap: 20px;
+            padding: 0 5%;
+        }
+
+        .video-card {
+            aspect-ratio: 9/16;
+            background: #111;
+            border-radius: 12px;
+            overflow: hidden;
+            display: block;
+            border: 1px solid #333;
+            transition: 0.3s ease;
+            position: relative;
+        }
+        .video-card:hover { border-color: #FF5500; transform: translateY(-5px); }
+        
+        .video-card video { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
+        
+        /* VIDEO TITLE (Optional Overlay) */
+        .vid-info {
+            position: absolute; bottom: 0; left: 0; width: 100%;
+            padding: 20px; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            opacity: 0; transition: 0.3s;
+        }
+        .video-card:hover .vid-info { opacity: 1; }
+        .vid-info h3 { font-size: 1rem; color: #fff; }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .gallery-grid { grid-template-columns: 1fr; } /* 1 video per row on mobile */
+            .header h1 { font-size: 12vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-back">
+        <a href="index.html">← Back to Home</a>
+    </div>
+
+    <div class="header">
+        <h1>All <span class="text-orange">Projects</span></h1>
+        <p style="color: #ccc;">A complete collection of my edits.</p>
+    </div>
+
+    <div class="gallery-grid">
+        
+        <a href="r3 (1).mp4" target="_blank" class="video-card">
+            <video muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"><source src="r3 (1).mp4" type="video/mp4"></video>
+            <div class="vid-info"><h3>Project Name 1</h3></div>
+        </a>
+
+        <a href="r3 (2).mp4" target="_blank" class="video-card">
+            <video muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"><source src="r3 (2).mp4" type="video/mp4"></video>
+            <div class="vid-info"><h3>Project Name 2</h3></div>
+        </a>
+
+        <a href="r3 (4).mp4" target="_blank" class="video-card">
+            <video muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"><source src="r3 (4).mp4" type="video/mp4"></video>
+            <div class="vid-info"><h3>Project Name 3</h3></div>
+        </a>
+        <a href="r5.mp4" target="_blank" class="video-card">
+            <video muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"><source src="r5.mp4" type="video/mp4"></video>
+            <div class="vid-info"><h3>Project Name 4</h3></div> ></a>
+         <a href="r4.mp4" target="_blank" class="video-card">
+            <video muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"><source src="r4.mp4" type="video/mp4"></video>
+            <div class="vid-info"><h3>Project Name 5</h3></div> ></a>
+         <a href="r6.mp4" target="_blank" class="video-card">
+            <video muted loop playsinline onmouseover="this.play()" onmouseout="this.pause()"><source src="r6.mp4" type="video/mp4"></video>
+            <div class="vid-info"><h3>Project Name 6</h3></div> ></a>
+
+        </div>
+
+</body>
+</html>
